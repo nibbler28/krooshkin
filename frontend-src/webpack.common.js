@@ -1,6 +1,5 @@
 const Path = require('path');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -9,11 +8,12 @@ const InjectManifest = require('workbox-webpack-plugin/build/inject-manifest.js'
 const path = require('path');
 
 module.exports = {
+  context: __dirname,
   entry: {
     index: './src/scripts/index.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve('dist'),
     filename: '[name].[contenthash].bundle.js'
   },
   devServer: {
@@ -39,7 +39,7 @@ module.exports = {
         test: /\.hbs$/,
         loader: "handlebars-loader",
         options: {
-          rootRelative: Path.resolve(__dirname, 'src/hbs') + '/',
+          rootRelative: Path.resolve('src/hbs') + '/',
         }
       },
       {
@@ -91,18 +91,6 @@ module.exports = {
         to: './assets'
       },
     ]),
-    new HtmlWebpackPlugin({
-      filename: './index.html',
-      template: './src/hbs/index.hbs'
-    }),
-    new HtmlWebpackPlugin({
-      filename: './about/index.html',
-      template: './src/hbs/about.hbs'
-    }),
-    new HtmlWebpackPlugin({
-      filename: './contacts/index.html',
-      template: './src/hbs/contacts.hbs'
-    }),
     new InjectManifest({
       swSrc: './src/service-worker.js',
     }),
