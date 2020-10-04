@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres
+    environment:
+      - "POSTGRES_DB=${POSTGRES_DB}"
+      - "POSTGRES_USER=${POSTGRES_USER}"
+      - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
+  web:
+    build: .
+    environment:
+      - "POSTGRES_DB=${POSTGRES_DB}"
+      - "POSTGRES_USER=${POSTGRES_USER}"
+      - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
+      - "SECRET_KEY=${SECRET_KEY}"
+      - "POSTGRES_PORT=${POSTGRES_PORT}"
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+

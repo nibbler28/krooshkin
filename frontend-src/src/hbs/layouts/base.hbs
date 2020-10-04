@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krooshkin.ru</title>
+</head>
+
+<body>
+<div class="page">
+{{#> content-block}}
+{{/content-block}}
+
+  <!--  <div class="preloader">-->
+  <!--    <div class="center-container">-->
+  <!--      <div class="krooshkin-logo">-->
+  <!--        K-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+
+
+  {{> partials/header.hbs }}
+
+  {{> partials/sidebar.hbs }}
+
+  {{> partials/footer.hbs }}
+
+  {{> partials/photoswipe-template.hbs }}
+
+</div>
+
+<script>
+  // Check that service workers are supported
+  if ('serviceWorker' in navigator) {
+    // Use the window load event to keep the page load performant
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js');
+    });
+  }
+</script>
+
+</body>
+
+</html>

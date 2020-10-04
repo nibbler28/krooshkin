@@ -1,0 +1,106 @@
+.header {
+  background-color: #222;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+
+  .wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .header__title {
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+
+  .toggle-menu {
+    cursor: pointer;
+
+    @include big {
+      visibility: hidden;
+      cursor: none;
+    }
+  }
+
+  .desktop-navigation {
+    display: none;
+
+    @include big {
+      display: flex;
+      list-style: none;
+
+      li + li {
+        margin-left: 15px;
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.toggle-menu {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .toggle-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 12px;
+    width: 20px;
+    // transform: translateY(-3px);
+  }
+
+  span {
+    display: block;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #fff;
+    transition: transform .1s;
+    will-change: transform;
+  }
+}
+
+.sidebar-open .toggle-menu {
+  span {
+    &:first-of-type {
+      transform: translateY(5px) rotate(-45deg);
+    }
+
+    &:nth-of-type(2) {
+      transform: scale(0);
+    }
+
+    &:last-of-type {
+      transform: translateY(-5px) rotate(45deg);
+    }
+  }
+}
+
+//  headroom.js styles start
+
+.headroom {
+  will-change: transform;
+  transition: transform 200ms linear;
+}
+
+.headroom--pinned {
+  transform: translateY(0%);
+}
+
+.headroom--unpinned {
+  transform: translateY(-100%);
+}
+
+// headroom.js styles end

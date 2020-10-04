@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="main" data-router-wrapper>
+
+  <div data-router-view="contacts">
+
+    <div class="wrapper contacts-wrapper">
+
+      <h1 class="main-title">Контакты</h1>
+
+      <section class="contacts-section">
+        <ul>
+          <li>
+            <a href="#">
+              Телеграм
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Почта
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Инстаграм
+            </a>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+
+  </div>
+
+</main>
+
+{% endblock %}

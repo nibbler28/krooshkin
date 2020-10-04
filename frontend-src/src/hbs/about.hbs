@@ -1,0 +1,41 @@
+{{#> layouts/base }}
+  {{#*inline "content-block"}}
+
+  <main class="main" data-router-wrapper>
+
+    <div data-router-view="about">
+      <div class="wrapper about-wrapper">
+
+        <h1 class="main-title">О сайте</h1>
+
+        <section class="about-section">
+          <h3>Информация о сайте</h3>
+          <p>
+            Сайт создан в 2020 с помощью готовых модулей:
+          <ul class="modules">
+            <li>
+              <a href="#">PhotoSwipe</a> для детального просмотра фотографии;
+            </li>
+            <li>
+              <a href="#">Masonry</a> для создания плиточной галереи на главной странице;
+            </li>
+            <li>
+              <a href="#">Highway.js</a> для создания навигации без перезагрузки страницы;
+            </li>
+            <li>
+              <a href="#">Headroom.js</a> для анимации шапки сайта при скролле;
+            </li>
+          </ul>
+          <h3>
+            Автор: <a href="#">@pavelrodionoff</a>
+          </h3>
+          </p>
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+  {{/inline}}
+{{/layouts/base}}
