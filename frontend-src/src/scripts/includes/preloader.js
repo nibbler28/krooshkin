@@ -1,21 +1,20 @@
-const preloader = document.querySelector('.preloader');
-
+const preloader = document.querySelector('.preloader')
 
 const preloadImage = imageSrc => {
     return new Promise(resolve => {
-        const image = document.createElement('img');
+        const image = document.createElement('img')
         image.src = imageSrc
 
         image.onload = resolve
     })
 }
 
-const sources = [];
+const sources = []
 
 for (let i = 2; i < 5; i++) {
     // const source = `./assets/k${}.jpeg`
 
-    let source;
+    let source
 
     sources.push(source)
 }

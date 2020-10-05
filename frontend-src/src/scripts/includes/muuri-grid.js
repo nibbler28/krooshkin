@@ -1,5 +1,5 @@
-import Muuri from 'muuri';
-import gsap from 'gsap';
+import Muuri from 'muuri'
+import gsap from 'gsap'
 
 const createGrid = () => {
   window.grid = new Muuri('.grid', {
@@ -7,16 +7,16 @@ const createGrid = () => {
       fillGaps: true
     }})
 
-  const grid = document.querySelector('.grid');
-  gsap.to(grid, {opacity: 1, duration: .125})
-};
+  const grid = document.querySelector('.grid')
+  gsap.to(grid, {opacity: 1, duration: 0.125})
+}
 
 const destroyGrid = () => {
-  window.grid.destroy();
-  window.grid = null;
+  window.grid.destroy()
+  window.grid = null
 }
 
 export {
   createGrid,
-  destroyGrid,
+  destroyGrid
 }

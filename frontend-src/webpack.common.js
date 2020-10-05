@@ -1,11 +1,11 @@
-const Path = require('path');
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const ManifestPlugin = require('webpack-manifest-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const InjectManifest = require('workbox-webpack-plugin/build/inject-manifest.js');
+const Path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const ManifestPlugin = require('webpack-manifest-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const InjectManifest = require('workbox-webpack-plugin/build/inject-manifest.js')
 // const BundleTracker = require('webpack-bundle-tracker');
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   context: __dirname,
@@ -24,27 +24,27 @@ module.exports = {
     moduleIds: 'hashed',
     runtimeChunk: 'single',
     splitChunks: {
-      chunks: 'all',
-    },
+      chunks: 'all'
+    }
   },
   module: {
     rules: [{
         test: /\.(woff2|png|svg|jpg|jpeg|gif)$/,
-        loader: "file-loader",
+        loader: 'file-loader',
         options: {
           esModule: false
         }
       },
       {
         test: /\.hbs$/,
-        loader: "handlebars-loader",
+        loader: 'handlebars-loader',
         options: {
-          rootRelative: Path.resolve('src/hbs') + '/',
+          rootRelative: Path.resolve('src/hbs') + '/'
         }
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.scss$/,
@@ -58,10 +58,10 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               // Prefer `dart-sass`
-              implementation: require('sass'),
-            },
-          },
-        ],
+              implementation: require('sass')
+            }
+          }
+        ]
       },
       {
         test: /\.js$/,
@@ -83,21 +83,21 @@ module.exports = {
     new CleanWebpackPlugin(),
     new ManifestPlugin(),
     new MiniCssExtractPlugin({
-      filename: "style.css"
+      filename: 'style.css'
     }),
     new CopyWebpackPlugin([
       {
         from: './src/assets/',
         to: 'assets/',
         ignore: ['static-photos/*']
-      },
+      }
     ]),
     new InjectManifest({
-      swSrc: './src/service-worker.js',
-    }),
+      swSrc: './src/service-worker.js'
+    })
     // new BundleTracker({filename: './webpack-stats.json'}),
   ]
-};
+}
 
 // process.on('unhandledRejection', (reason, p) => {
 //   console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
