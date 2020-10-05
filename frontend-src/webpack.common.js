@@ -88,7 +88,8 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: './src/assets/',
-        to: './assets'
+        to: 'assets/',
+        ignore: ['static-photos/*']
       },
     ]),
     new InjectManifest({
@@ -98,7 +99,7 @@ module.exports = {
   ]
 };
 
-process.on('unhandledRejection', (reason, p) => {
-  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
-  // application specific logging, throwing an error, or other logic here
-});
+// process.on('unhandledRejection', (reason, p) => {
+//   console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
+//   // application specific logging, throwing an error, or other logic here
+// });

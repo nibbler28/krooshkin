@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "rm -rf dist && webpack-dev-server --host 0.0.0.0 --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
-    "custom-build": "webpack --config webpack.custom-prod.js"
+    "build": "rm -rf dist && webpack --config webpack.prod.js"
   },
   "keywords": [
     "krooshkin-front"
@@ -48,7 +47,9 @@
   },
   "dependencies": {
     "@dogstudio/highway": "^2.2.1",
+    "gsap": "^3.5.1",
     "headroom.js": "^0.11.0",
+    "muuri": "^0.9.3",
     "photoswipe": "^4.1.3"
   }
 }
