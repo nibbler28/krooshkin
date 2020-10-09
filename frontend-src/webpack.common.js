@@ -1,10 +1,11 @@
 const Path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const InjectManifest = require('workbox-webpack-plugin/build/inject-manifest.js')
-// const BundleTracker = require('webpack-bundle-tracker');
+const BundleTracker = require('webpack-bundle-tracker');
 const path = require('path')
 
 module.exports = {
@@ -35,13 +36,26 @@ module.exports = {
           esModule: false
         }
       },
-      {
-        test: /\.hbs$/,
-        loader: 'handlebars-loader',
-        options: {
-          rootRelative: Path.resolve('src/hbs') + '/'
-        }
-      },
+      // {
+      //   test: /\.html$/,
+      //   loader: 'html-loader',
+      //   options: {
+      //     attributes: {
+      //       list: [
+      //         {
+      //           tag: 'link',
+      //           attribute: 'href',
+      //           type: 'src',
+      //         },
+      //         {
+      //           tag: 'script',
+      //           attribute: 'src',
+      //           type: 'src',
+      //         },
+      //       ]
+      //     }
+      //   }
+      // },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
@@ -92,14 +106,17 @@ module.exports = {
         ignore: ['static-photos/*']
       }
     ]),
+    // new HtmlWebpackPlugin(),
     new InjectManifest({
-      swSrc: './src/service-worker.js'
-    })
-    // new BundleTracker({filename: './webpack-stats.json'}),
+      swSrc: './src/service-worker.js',
+      exclude: [/\.html$/]
+    }),
+    // new HtmlWebpackPlugin({
+    //   template: './src/partials/scripts-partial.html',
+    //   filename: 'partials/scripts-partial.html',
+    //   // inject: false
+    // }),
+    new BundleTracker({filename: './webpack-stats.json'})
   ]
 }
 
-// process.on('unhandledRejection', (reason, p) => {
-//   console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
-//   // application specific logging, throwing an error, or other logic here
-// });

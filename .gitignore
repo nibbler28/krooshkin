@@ -3,3 +3,5 @@ node_modules
 .env
 staticfiles
 dist
+__pycache__
+migrations
