@@ -36,26 +36,6 @@ module.exports = {
           esModule: false
         }
       },
-      // {
-      //   test: /\.html$/,
-      //   loader: 'html-loader',
-      //   options: {
-      //     attributes: {
-      //       list: [
-      //         {
-      //           tag: 'link',
-      //           attribute: 'href',
-      //           type: 'src',
-      //         },
-      //         {
-      //           tag: 'script',
-      //           attribute: 'src',
-      //           type: 'src',
-      //         },
-      //       ]
-      //     }
-      //   }
-      // },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
