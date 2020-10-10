@@ -3,11 +3,11 @@ from django.views.generic.list import ListView
 from .models import Photo
 
 class HomePageView(ListView):
-    template_name = "krooshkin/index.html"
+    template_name = "krooshkin/pages/index.html"
     model = Photo
 
 class AboutPageView(TemplateView):
-    template_name = "krooshkin/about.html"
+    template_name = "krooshkin/pages/about.html"
 
 class ContactsPageView(TemplateView):
-    template_name = "krooshkin/contacts.html"
+    template_name = "krooshkin/pages/contacts.html"

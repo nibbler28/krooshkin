@@ -1,12 +1,10 @@
-const Path = require('path')
+const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ManifestPlugin = require('webpack-manifest-plugin')
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const InjectManifest = require('workbox-webpack-plugin/build/inject-manifest.js')
 const BundleTracker = require('webpack-bundle-tracker');
-const path = require('path')
 
 module.exports = {
   context: __dirname,
@@ -38,13 +36,19 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        // use: ['style-loader', 'css-loader']
+        use: [
+          MiniCssExtractPlugin.loader,
+          // 'style-loader',
+          'css-loader'
+        ]
       },
       {
         test: /\.scss$/,
         use: [
+          MiniCssExtractPlugin.loader,
           // fallback to style-loader in development
-          'style-loader',
+          // 'style-loader',
           // process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader',
@@ -75,9 +79,8 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new ManifestPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'style.css'
+      filename: '[name].[contenthash].bundle.css'
     }),
     new CopyWebpackPlugin([
       {
@@ -86,17 +89,10 @@ module.exports = {
         ignore: ['static-photos/*']
       }
     ]),
-    // new HtmlWebpackPlugin(),
     new InjectManifest({
       swSrc: './src/service-worker.js',
-      exclude: [/\.html$/]
     }),
-    // new HtmlWebpackPlugin({
-    //   template: './src/partials/scripts-partial.html',
-    //   filename: 'partials/scripts-partial.html',
-    //   // inject: false
-    // }),
-    new BundleTracker({filename: './webpack-stats.json'})
+    new BundleTracker({filename: './dist/webpack-stats.json'})
   ]
 }
 

@@ -36,10 +36,9 @@
     "url-loader": "^1.1.1",
     "webpack": "^4.44.1",
     "webpack-bundle-analyzer": "^3.9.0",
-    "webpack-bundle-tracker": "^1.0.0-alpha.1",
+    "webpack-bundle-tracker": "^0.4.3",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
-    "webpack-manifest-plugin": "^2.2.0",
     "webpack-merge": "^5.1.4",
     "workbox-webpack-plugin": "^5.1.4"
   },

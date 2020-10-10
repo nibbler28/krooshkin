@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load render_bundle from webpack_loader %}
+{% load static %}
+<html lang="en">
+<meta charset="utf-8">
+<head>
+  <title>{% block title %}Krooshkin{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  {% render_bundle 'index' 'css' %}
+  {% render_bundle 'vendors~index' 'css' %}
+</head>
+
+<body class="page">
+
+{% include './includes/_header.html' %}
+
+{% include './includes/_sidebar.html' %}
+
+{% block content %}
+{% endblock %}
+
+{% include './includes/_footer.html' %}
+
+{% include './includes/_photoswipe-template.html' %}
+
+{% render_bundle 'runtime' 'js' %}
+{% render_bundle 'vendors~index' 'js' %}
+{% render_bundle 'index' 'js' %}
+</body>
+</html>
