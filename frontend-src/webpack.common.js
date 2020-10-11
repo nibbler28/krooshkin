@@ -1,10 +1,9 @@
 const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-// const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const InjectManifest = require('workbox-webpack-plugin/build/inject-manifest.js')
-const BundleTracker = require('webpack-bundle-tracker');
+const BundleTracker = require('webpack-bundle-tracker')
 
 module.exports = {
   context: __dirname,
@@ -36,10 +35,8 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        // use: ['style-loader', 'css-loader']
         use: [
           MiniCssExtractPlugin.loader,
-          // 'style-loader',
           'css-loader'
         ]
       },
@@ -90,7 +87,7 @@ module.exports = {
       }
     ]),
     new InjectManifest({
-      swSrc: './src/service-worker.js',
+      swSrc: './src/service-worker.js'
     }),
     new BundleTracker({filename: './dist/webpack-stats.json'})
   ]

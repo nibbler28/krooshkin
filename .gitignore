@@ -5,3 +5,4 @@ staticfiles
 dist
 __pycache__
 migrations
+uploaded_photos/

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "rm -rf dist && webpack-dev-server --host 0.0.0.0 --config webpack.dev.js",
-    "build": "rm -rf dist && webpack --config webpack.prod.js"
+    "build": "rm -rf dist && webpack --config webpack.prod.js",
+    "lint": "npx standart src/**/*.js --fix"
   },
   "keywords": [
     "krooshkin-front"
@@ -30,6 +31,7 @@
     "postcss-preset-env": "^6.6.0",
     "sass": "^1.26.10",
     "sass-loader": "^7.1.0",
+    "standart": "^6.1.0",
     "style-loader": "^0.23.0",
     "ts-loader": "^8.0.3",
     "typescript": "^4.0.2",
