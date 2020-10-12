@@ -11,9 +11,15 @@
       <div class="grid">
 
         {% for photo in object_list %}
-        <div class="item">
+        {% if photo.vertical %}
+        <div class="item item--vertical" data-width="800" data-height="1200">
+          <img src="{% static 'assets/placeholder.gif' %}" data-src="{{ photo.photo.url }}" alt="">
+        </div>
+        {% else %}
+        <div class="item" data-width="1200" data-height="800">
             <img src="{% static 'assets/placeholder.gif' %}" data-src="{{ photo.photo.url }}" alt="">
         </div>
+        {% endif %}
         {% empty %}
 
         <li>No articles yet.</li>
@@ -30,7 +36,7 @@
 <!--        <div class="item test-item">-->
 <!--          <img src="{% static 'assets/placeholder.gif' %}" data-src="https://www.safariwest.com/wp-content/uploads/American-Flamingo-Steve-Murdock-1920x768.jpg" alt="">-->
 <!--        </div>-->
-        
+
       </div>
     </div>
   </div>
