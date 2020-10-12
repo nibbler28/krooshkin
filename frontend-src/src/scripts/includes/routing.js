@@ -14,9 +14,7 @@ class Fade extends Highway.Transition {
 
     from.remove()
 
-    gsap.fromTo(to, 0.125, {opacity: 0}, {
-      opacity: 1, onComplete: done
-    })
+    gsap.fromTo(to, 0.125, {opacity: 0}, {opacity: 1, onComplete: done})
   }
 }
 

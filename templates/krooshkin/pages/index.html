@@ -1,4 +1,5 @@
 {% extends "../_base.html" %}
+{% load static %}
 
 {% block content %}
 
@@ -10,9 +11,8 @@
       <div class="grid">
 
         {% for photo in object_list %}
-        <div class="item test-item">
-          <img src="{{ photo.photo.url }}" alt="">
-<!--          todo: add images lazy loading-->
+        <div class="item">
+            <img src="{% static 'assets/placeholder.gif' %}" data-src="{{ photo.photo.url }}" alt="">
         </div>
         {% empty %}
 
@@ -20,6 +20,17 @@
 
         {% endfor %}
 
+<!--        placeholder images from web-->
+<!--        <div class="item test-item">-->
+<!--          <img src="{% static 'assets/placeholder.gif' %}" data-src="https://tailandfur.com/wp-content/uploads/2016/10/40-Beautiful-Pictures-of-Pink-Flamingo-Birds-32.jpg" alt="">-->
+<!--        </div>-->
+<!--        <div class="item test-item">-->
+<!--          <img src="{% static 'assets/placeholder.gif' %}" data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Rosaflamingo-K%C3%BCken_-_Fuetterung_mit_Kropfmilch.jpg/220px-Rosaflamingo-K%C3%BCken_-_Fuetterung_mit_Kropfmilch.jpg" alt="">-->
+<!--        </div>-->
+<!--        <div class="item test-item">-->
+<!--          <img src="{% static 'assets/placeholder.gif' %}" data-src="https://www.safariwest.com/wp-content/uploads/American-Flamingo-Steve-Murdock-1920x768.jpg" alt="">-->
+<!--        </div>-->
+        
       </div>
     </div>
   </div>
