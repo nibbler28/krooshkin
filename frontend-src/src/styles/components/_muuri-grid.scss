@@ -28,20 +28,42 @@
   border-radius: 2.5px;
 
   @include medium {
-    border-radius: 2.5px;
     width: #{((100-3)/4) + 'vw'};
     height: #{(((100-3)/4)/3*2) + 'vw'};
   }
 
   @include big {
-    border-radius: 2.5px;
-    width: #{((90-2)/5) + 'vw'};
-    height: #{(((90-2)/5)/3*2) + 'vw'}
+    width: #{((95-2)/5) + 'vw'};
+    height: #{(((95-2)/5)/3*2) + 'vw'}
   }
 
   &--vertical {
+    width: #{(((100-4)/2)/3*2) + '%'};
+    height: #{((100-4)/2) + 'vw'};
+
+    @include medium {
+      width: #{(((100-3)/4)/3*2) + 'vw'};
+      height: #{((100-3)/4) + 'vw'};
+    }
+
     @include big {
-      border-radius: 2.5px;
+      width: #{(((95-2)/5)/3*2) + 'vw'};
+      height: #{((95-2)/5) + 'vw'}
+    }
+  }
+
+  &--square {
+    width: #{(((100-4)/2)/3*2) + '%'};
+    height: #{(((100-4)/2)/3*2) + '%'};
+
+    @include medium {
+      width: #{(((100-3)/4)/3*2) + 'vw'};
+      height: #{(((100-3)/4)/3*2) + 'vw'};
+    }
+
+    @include big {
+      width: #{(((95-2)/5)/3*2) + 'vw'};
+      height:  #{(((95-2)/5)/3*2) + 'vw'};
     }
   }
 }
