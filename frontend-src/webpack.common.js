@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const InjectManifest = require('workbox-webpack-plugin/build/inject-manifest.js')
 const BundleTracker = require('webpack-bundle-tracker')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
   context: __dirname,
@@ -76,6 +77,13 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new OptimizeCssAssetsPlugin({
+      cssProcessor: require('cssnano'),
+      cssProcessorPluginOptions: {
+        preset: ['default', { discardComments: { removeAll: true } }],
+      },
+      canPrint: true
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].bundle.css'
     }),
